@@ -1,0 +1,57 @@
+h1 {
+    color:red;
+}
+
+body{
+    background-image:url(https://lms.misiontic2022udea.com/theme/image.php/misiontic/theme/1654218085/bg-login-mision-tic);
+    height:100vh;
+    background-size: contain;
+    background-repeat:no-repeat;
+}
+.contenedor-principal{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+.contenedor-login{
+    background-color:white;
+    align: center;
+}
+.contenedor-formulario{
+    display: flex;
+    flex-direction:column;
+}
+.contenedor-formulario button{
+    background-color: #e83565;
+        color: white;
+        border: none;
+        font-size: 22px;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+        background-size: 200% auto;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 1.5;
+        text-decoration: none;
+        padding: 5px 5px;
+        margin-top: 1rem!important;
+}
+
+
+.label{
+    color: #7d7e83!important;
+    font-size: .75rem;
+    font-weight: 400;
+    transition: all 350ms ease;
+    text-decoration: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    text-align: right!important;
+    line-height: 1.5;
+    overflow-x: hidden;
+    margin-top: 0.5rem!important;
+
+
+}
