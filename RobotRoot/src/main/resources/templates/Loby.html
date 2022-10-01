@@ -8,6 +8,50 @@
   <link rel="stylesheet" href="../static/css/Loby.css">
   <!--    <link href="styles.css" rel="stylesheet"> -->
   <style>
+        body {
+        margin: 0;
+        padding: 0;
+        background-size: cover;
+        font-family: sans-serif;
+        height: 100vh;
+    }
+
+    .login-box{
+        width: 320px;
+        height: 420px;
+        background: #d7d7d7;
+        color: #2695a9;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+        border-radius: 10px;
+    }
+    .login-box h1 {
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 22px;
+    }
+    .login-box a {
+        border: none;
+        outline: none;
+        height: 40px;
+        width: 250px;
+        background: #2695a9;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+    .login-box a:hover {
+        cursor: pointer;
+        background: #676767;
+        color: #000;
+    }
     a{
       display: block;
       width: 100px;
@@ -28,26 +72,26 @@
   </style>
 </head>
 <body>
-<div class="login-box">
-  <h1>Aplicativo</h1>
-  <form>
-    <br>
-    <div>
-      <a href="empresa.html" type="button" class="btn btn-primary btn-lg px-5 gap-3">Empresa</a>
+  <div class="login-box">
+    <h1>Aplicativo</h1>
+    <form>
+      <br>
+      <div>
+        <a href="empresa.html" type="button" class="btn btn-primary btn-lg px-5 gap-3">Empresa</a>
+      </div>
+      <br>
+      <div>
+        <a href="empleado.html" type="button" class="btn btn-primary btn-lg px-5 gap-3">Empleados</a>
+      </div>
+      <br>
+      <div>
+        <a href="movimiento.html" type="button" class="btn btn-primary btn-lg px-5 gap-3">Movimientos</a>
+      </div>
+      <br>
+      <div>
+        <a href="index.html" type="button" class="btn btn-outline-secondary btn-lg px-5">Volver</a>
+      </div>
     </div>
-    <br>
-    <div>
-      <a href="empleado.html" type="button" class="btn btn-primary btn-lg px-5 gap-3">Empleados</a>
-    </div>
-    <br>
-    <div>
-      <a href="movimiento.html" type="button" class="btn btn-primary btn-lg px-5 gap-3">Movimientos</a>
-    </div>
-    <br>
-    <div>
-      <a href="index.html" type="button" class="btn btn-outline-secondary btn-lg px-5">Volver</a>
-    </div>
-</div>
 </div>
 </form>
 </body>

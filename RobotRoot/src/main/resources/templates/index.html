@@ -1,10 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Inicio de sesion</title>
-    <link rel="stylesheet" href="../static/css/sesion.css">
+    <link rel="stylesheet" href="src/main/resources/static/css/sesion.css">
     <style>
+        body {
+        margin: 0;
+        padding: 0;
+        background-size: cover;
+        font-family: sans-serif;
+        height: 100vh;
+    }
+
+    .login-box {
+        width: 320px;
+        height: 420px;
+        background: #d7d7d7;
+        color: #2695a9;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+        border-radius: 10px;
+    }
+
+    .login-box .avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        top: -50px;
+        left: calc(50% - 50px);
+    }
+
+    .login-box h1 {
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .login-box label {
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        display: block;
+    }
+
+    .login-box input {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .login-box input[type="text"], .login-box input[type="password"] {
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: #000000;
+        font-size: 16px;
+    }
+
+    .login-box button[type="button"] {
+        border: none;
+        outline: none;
+        height: 40px;
+        width: 250px;
+        background: #2695a9;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 20px;
+    }
+
+    .login-box button[type="button"]:hover {
+        cursor: pointer;
+        background: #676767;
+        color: #000;
+    }
+
+
+
+    .login-box a {
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 20px;
+        color: darkgrey;
+    }
+
+    .login-box a:hover {
+        color: #000000;
+    }
         a[type="button"]{
             display: block;
             width: 250px;
@@ -24,11 +117,12 @@
             color: #5b5b5b;
         }
     </style>
+
 </head>
 <body>
 <div class="login-box">
     <h1>Iniciar sesion</h1>
-    <form>
+    <form th:action="@{/index}" method="get">
         <!-- USERNAME INPUT -->
         <label for="username">Correo electronico</label>
         <input type="text" placeholder="Ingrese correo electronico ">
