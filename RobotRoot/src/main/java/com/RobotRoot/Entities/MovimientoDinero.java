@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class MovimientoDinero {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(name = "montoMovimiento")
     private double montoMovimiento;

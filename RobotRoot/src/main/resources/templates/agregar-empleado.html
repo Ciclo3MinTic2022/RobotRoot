@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+    <form th:action="@{/empleado}" method="post">
+
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" th:field="${empleado.nombre}">
+
+        <label for="correo">Correo</label>
+        <input type="text" id="correo" th:field="${empleado.correo}">
+
+        <label for="EmpresaEmpleadoPertenece">Empresa del empleado</label>
+        <input type="text" id="EmpresaEmpleadoPertenece" th:field="${empleado.EmpresaEmpleadoPertenece}">
+
+        <label for="rolEmpleado">Rol del empleado</label>
+        <input type="text" id="rolEmpleado" th:field="${empleado.rolEmpleado}">
+
+        <label for="Movimiento1">Movimiento</label>
+        <input type="number" id="Movimiento1" th:field="${empleado.Movimiento1}">
+
+        <input type="submit" value="Agregar Empleado">
+
+    </form>
+</body>
+</html>

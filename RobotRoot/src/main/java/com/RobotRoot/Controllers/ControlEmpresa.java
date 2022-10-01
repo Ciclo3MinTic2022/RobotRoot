@@ -43,12 +43,12 @@ public class ControlEmpresa {
         return "redirect:/enterprise";
     }
 
-    @GetMapping("/enterprise/editar/{id}")
-    private String actualEmpresa(@PathVariable("id") Long id, Model model){
-        Empresa empresa = se1.actualEmpresa(id);
-        model.addAttribute("empresa", empresa);
-        return "actualizar-registro-empresa";
-    }
+//    @GetMapping("/enterprise/editar/{id}")
+//    private String actualEmpresa(@PathVariable("id") Long id, Model model){
+//        Empresa empresa = se1.actualEmpresa(id);
+//        model.addAttribute("empresa", empresa);
+//        return "actualizar-registro-empresa";
+//    }
 
     @PostMapping("/enterprise/actualizar/{id}")
     private String actualizarEmpresa(@PathVariable("id") Long id, Empresa actEmpresa){

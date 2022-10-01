@@ -41,7 +41,7 @@ public class ServiceEmpresa {
         return this.repositorio.save(empresaActual);
     }
 
-    public Empresa eliminEmpresa(Long id){
+    public Empresa eliminEmpresa(long id){
         Empresa empresaActual = repositorio.findById(id).orElseThrow();
         this.repositorio.deleteById(id);
         return empresaActual;
