@@ -5,7 +5,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-public class SecurityConfig {
+public class SecurityConfig<HttpSecurity> {
     private final LogoutHandler logoutHandler;
 
     public SecurityConfig(LogoutHandler logoutHandler) {
