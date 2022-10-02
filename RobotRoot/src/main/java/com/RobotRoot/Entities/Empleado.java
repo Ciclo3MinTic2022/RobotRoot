@@ -1,87 +1,100 @@
 package com.RobotRoot.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name="empleado")
+@Table(name="Empleado")
 public class Empleado {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(nullable = false)
+    private Long id;
 
-    @Column(name = "nombre")
-    private String nombre;
-    @Column(name = "correo")
-    private String correo;
-    @Column(name = "empresaEmpleadoPertenece")
-    private String empresaEmpleadoPertenece;
-    @Column(name = "rolEmpleado")
-    private String rolEmpleado;
+    @Column(unique = true, nullable =  false)
+    private String  email;
 
-    @Transient
-    private MovimientoDinero movimiento1;
+    @Column(nullable = false)
+    private String rol;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "nombre")
+    private Perfil perfil;
+
+    @OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<MovimientoDinero> movimientoDineros;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "empresaId", referencedColumnName = "id", nullable = false)
+    private Empresa empresa;
+
+
+    public Empleado(Long id, String email, Perfil perfil, String rol,Empresa empresa) {
+        this.id = id;
+        this.email = email;
+        this.perfil = perfil;
+        this.rol = rol;
+        this.empresa = empresa;
+    }
     public Empleado(){
 
     }
 
-    public Empleado(String nombre, String correo, String empresaEmpleadoPertenece, String rolEmpleado, MovimientoDinero movimiento1) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.empresaEmpleadoPertenece = empresaEmpleadoPertenece;
-        this.rolEmpleado = rolEmpleado;
-        this.movimiento1 = movimiento1;
+    public Long getId() {
+        return id;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public Perfil getPerfil() {
+        return perfil;
+    }
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+    public Set<MovimientoDinero> getMovimientoDineros() {
+        return movimientoDineros;
+    }
+    public void setMovimientoDineros(Set<MovimientoDinero> movimientoDineros) {
+        if(this.rol.equals("Administrador")){
+            this.movimientoDineros = movimientoDineros;
+        }else{
+            System.out.println("Usted no es administrador, no tienes permiso.");
+        }
+    }
+    public String getRol() {
+        return rol;
+    }
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
-    public String getNombre() {
-        return nombre;
+
+
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
-    public String getCorreo() {
-        return correo;
+
+    public void CambiarNombre(String cambiarNombre) {
+        this.perfil.setId(cambiarNombre);
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getEmpresaEmpleadoPertenece() {
-        return empresaEmpleadoPertenece;
-    }
-
-    public void setEmpresaEmpleadoPertenece(String empresaEmpleadoPertenece) {
-        this.empresaEmpleadoPertenece = empresaEmpleadoPertenece;
-    }
-
-    public String getRolEmpleado() {
-        return rolEmpleado;
-    }
-
-    public void setRolEmpleado(String rolEmpleado) {
-        this.rolEmpleado = rolEmpleado;
-    }
-
-    public MovimientoDinero getMovimiento1() {
-        return movimiento1;
-    }
-
-    public void setMovimiento1(MovimientoDinero movimiento1) {
-        this.movimiento1 = movimiento1;
-    }
 
     @Override
     public String toString() {
-        return "Empleado{" +
-                "nombre='" + nombre + '\'' +
-                ", correo='" + correo + '\'' +
-                ", empresaEmpleadoPertenece='" + empresaEmpleadoPertenece + '\'' +
-                ", rolEmpleado='" + rolEmpleado + '\'' +
-                ", movimiento1=" + this.movimiento1 +
-                '}';
+        return "Empleado [email=" + email + ", id=" + id + ", movimientoDineros=" + ", " + perfil.toString() + ", rol=" + rol + "]";
     }
 }

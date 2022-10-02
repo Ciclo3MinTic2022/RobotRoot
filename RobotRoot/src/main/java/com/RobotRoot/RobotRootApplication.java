@@ -12,11 +12,11 @@ public class RobotRootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RobotRootApplication.class, args);
 
-		MovimientoDinero mvd1=new MovimientoDinero(45875,"Compra insumos");
-		Empleado emp1= new Empleado("Adan", "adan12345@misena.edu.co","Cocacola","administrador", mvd1);
-		Empresa ep1=new Empresa("Cocalola", "Cr50#20-25", 3012251, "1235478-NIT", emp1);
-
-		System.out.println(ep1.toString());
+//		MovimientoDinero mvd1=new MovimientoDinero(45875,"Compra insumos");
+//		Empleado emp1= new Empleado("Adan", "adan12345@misena.edu.co","Cocacola","administrador", mvd1);
+//		Empresa ep1=new Empresa("Cocalola", "Cr50#20-25", 3012251, "1235478-NIT", emp1);
+//
+//		System.out.println(ep1.toString());
 
 	}
 }

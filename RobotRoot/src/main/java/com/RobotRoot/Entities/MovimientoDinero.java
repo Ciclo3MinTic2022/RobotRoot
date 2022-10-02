@@ -1,55 +1,90 @@
 package com.RobotRoot.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Movimientodinero")
+@Table(name = "MovimientoDinero")
 public class MovimientoDinero {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @Column(unique = true, length = 30)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY) //generar automaticamente un valor
+    private int id;
 
-    @Column(name = "montoMovimiento")
-    private double montoMovimiento;
-    @Column(name = "conceptoMovimiento")
-    private String conceptoMovimiento;
+    @Column(nullable = false, length = 30)
+    private  String concepto;
 
-    public MovimientoDinero(){
-    }
-    public MovimientoDinero(double montoMovimiento, String conceptoMovimiento) {
-        this.montoMovimiento = montoMovimiento;
-        this.conceptoMovimiento = conceptoMovimiento;
-    }
+    @Column(nullable = false, length = 50)
+    private  float monto;
 
-    public double getMontoMovimiento() {
-        return montoMovimiento;
-    }
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "Empleado_id", referencedColumnName = "id", nullable = false)
+    private Empleado empleado;
 
-    public void setMontoMovimiento(double montoMovimiento) {
-        this.montoMovimiento = montoMovimiento;
-    }
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "Empresa_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
+    private Empresa empresa;
 
-    public String getConceptoMovimiento() {
-        return conceptoMovimiento;
+
+    public MovimientoDinero() {     //Constructor vacio
     }
 
-    public void setConceptoMovimiento(String conceptoMovimiento) {
-        this.conceptoMovimiento = conceptoMovimiento;
+
+    public Empleado getEmpleado() {
+        return empleado;
     }
 
-    public double crearMonto(){
-        return -1;
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
-    public String usuarioEncargadoRegistrarMovimiento(){
-        return "-1";
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public MovimientoDinero(int id, String concepto, float monto,Empleado empleado, Empresa empresa) { //Constructor
+        this.id = id;
+        this.concepto = concepto;
+        this.monto = monto;
+        this.empleado =empleado;
+        this.empresa = empresa;
+    }
+
+    public String getConcepto() {
+        return concepto;
+    }
+
+    public void setConcepto(String concepto) {
+        this.concepto = concepto;
+    }
+
+    public float getMonto() {
+        return monto;
+    }
+
+    public void setMonto(float monto) {
+        this.monto = monto;
+    }
+
+
+    public int getId() {
+        return id;
     }
 
     @Override
     public String toString() {
         return "MovimientoDinero{" +
                 "id=" + id +
-                ", montoMovimiento=" + montoMovimiento +
-                ", conceptoMovimiento='" + this.conceptoMovimiento + '\'' +
+                ", concepto='" + concepto + '\'' +
+                ", monto=" + monto +
+                ", empleado=" + empleado +
+                ", empresa=" + empresa +
                 '}';
     }
 }

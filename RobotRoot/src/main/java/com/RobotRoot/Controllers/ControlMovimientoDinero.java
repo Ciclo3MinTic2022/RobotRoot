@@ -6,40 +6,33 @@ import com.RobotRoot.Services.ServiceMovimientoDinero;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+
 @RestController
 public class ControlMovimientoDinero {
-/*
-    ServiceMovimientoDinero ServiMovDin = new ServiceMovimientoDinero();
 
-    public ControlMovimientoDinero(ServiceMovimientoDinero serviMovDin) {
-        this.ServiMovDin =  new ServiceMovimientoDinero();
-    }
-
-    @GetMapping("/movimiento")
-    public MovimientoDinero ConstrolarMovimientoDinero(){
-        return this.ServiMovDin.getMovimiento1();
-    }
- */
-ServiceMovimientoDinero ServiMovDin;
+    private ServiceMovimientoDinero ServiMovDin;
 
     public ControlMovimientoDinero(ServiceMovimientoDinero serviMovDin) {
         this.ServiMovDin =  serviMovDin;
     }
-    @GetMapping("/movimiento")
-    public List<MovimientoDinero> ConstrolarMovimientoDinero(){
-        return this.ServiMovDin.getRepositorioMovDine();
+    @GetMapping("/enterprises/{id}/movements/{index}")
+    public MovimientoDinero ConsultarMD(@PathVariable("id") Long id, @PathVariable("index") Integer index){
+        return this.ServiMovDin.BuscarP(id,index);
     }
 
-    @PostMapping("/movimiento")
-    public MovimientoDinero crearMovimiento(@RequestBody MovimientoDinero mov){return this.ServiMovDin.CrearRegistro(mov);}
-
-    @PutMapping("/movimiento/{id}")
-    public MovimientoDinero actualizarMovimiento(@PathVariable Long id, @RequestBody MovimientoDinero actMovimiento){
-        return this.ServiMovDin.actualMovimiento(id,actMovimiento);
+    @PostMapping("/enterprises/{id}/movements")
+    public String crearMD(@RequestBody MovimientoDinero x, @PathVariable("id") Long id){
+        return  this.ServiMovDin.crearMD(x, id);
     }
 
-    @DeleteMapping("/movimiento/{id}")
-    public MovimientoDinero eliminarMovimiento(@PathVariable(value = "id") Long id){
-        return this.ServiMovDin.eliminMovimiento(id);
+    @PatchMapping("/enterprises/movements/{id}")
+    public MovimientoDinero actualizarMovimientos(@PathVariable("id")int id, @RequestBody Map<Object,Object> p){
+        return  this.ServiMovDin.actualizarMovimientos(id,p);
+    }
+
+    @DeleteMapping("/enterprises/{id}/movements/{index}")
+    public  String eliminarMovimiento(@PathVariable("id") Long id, @PathVariable("index") Integer index){
+        return this.ServiMovDin.eliminarMovimiento(index, id);
     }
 }
